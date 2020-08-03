@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            function send(){
+                var u = document.getElementById("url").value;
+                console.log(u);
+                $.ajax({
+                    url: "/generate/"+u,
+                    success: function(result){
+                        $("#suffix").text(result);
+                        document.getElementById("suffix-container").style.display = "block";
+                    }
+                });
+            }
+        </script>
+        <title>URL SHORTENER</title>
+        <link rel="stylesheet" href="index.css"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container h-100 py-5">
+            
+            <div class="row justify-content-center">
+                <div class="h-12">
+                    <h1 class="text-primary">
+                        URL SHORTENER
+                    </h1>  
+                </div>      
+            </div>
+        
+
+            <div class="row justify-content-center">
+                <div class="h-12">
+                    <form>
+                        <div class="input-group mb-3">
+                            <input type="url" id="url" class="form-control" placeholder="URL">
+                            <div class="input-group-append">
+                              <button class="btn btn-primary" type="button" onclick="send()">Button</button>
+                            </div>
+                          </div>
+                    </form>
+                </div>      
+            </div>
+
+            <div class="row justify-content-center" id="suffix-container" style="display: none;">
+                <div class="h-12">
+                    <p>Your url is: </p>
+                    <p id="suffix"></p>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>
